@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CategorieRepo extends JpaRepository<Categorie, Long> {
-    public Categorie findCategorieByLibelle(String libelle);
+    public Categorie findByLibelle(String libelle);
 }

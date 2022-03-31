@@ -41,15 +41,15 @@
 
     <!-- LOG everything at INFO level -->
     <root level="info">
-        <appender-ref ref="RollingFile" />
+<!--        <appender-ref ref="RollingFile" />-->
         <appender-ref ref="Console" />
     </root>
 
     <!-- LOG "com.baeldung*" at TRACE level -->
-    <logger name="com.example.aopboot.Example.TraceInvocation"
+    <logger name="io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires"
             level="trace" additivity="false">
         <appender-ref ref="RollingFile" />
-        <appender-ref ref="Console" />
+<!--        <appender-ref ref="Console" />-->
     </logger>
 
 </configuration>

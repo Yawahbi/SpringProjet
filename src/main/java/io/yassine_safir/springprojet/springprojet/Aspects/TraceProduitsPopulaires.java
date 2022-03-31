@@ -14,7 +14,7 @@ public class TraceProduitsPopulaires {
 
     private static final Logger logger = (Logger) LoggerFactory.getLogger(TraceProduitsPopulaires.class);
 
-    @Pointcut("execution(* io.yassine_safir.springprojet.springprojet.Services.ProduitService.getProduit())")
+    @Pointcut("execution(* io.yassine_safir.springprojet.springprojet.Services.ProduitService.getProduitById(*))")
     public void traceProduitsPopulairesPointcut() { }
 
     @Around("traceProduitsPopulairesPointcut()")
@@ -22,7 +22,7 @@ public class TraceProduitsPopulaires {
         String nomMethode = joinpoint.getTarget().getClass().getSimpleName() + "."
                 + joinpoint.getSignature().getName();
         Object obj =joinpoint.proceed();
-        logger.info(nomMethode);
+        logger.trace(nomMethode+" "+joinpoint.getArgs()[0]);
         return obj;
     }
 }
