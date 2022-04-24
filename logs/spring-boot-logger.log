@@ -1,2 +1,7 @@
 2022-04-24 14:42:19,278 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-4] ProduitService.getProduitById P001
 2022-04-24 14:42:57,510 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-6] ProduitService.getProduitById P001
+2022-04-24 16:00:20,869 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-2] ProduitService.getProduitById P001
+2022-04-24 16:00:32,661 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-3] ProduitService.getProduitById P001
+2022-04-24 16:00:44,089 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-5] ProduitService.getProduitById P002
+2022-04-24 16:00:49,371 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-7] ProduitService.getProduitById P001
+2022-04-24 16:00:49,403 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-7] ProduitService.getProduitById P001

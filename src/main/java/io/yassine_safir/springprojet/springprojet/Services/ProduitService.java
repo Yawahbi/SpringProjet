@@ -35,14 +35,14 @@ public class ProduitService implements IProduitService {
 
     @Override
     public Produit getProduitById(String ref){
-        return produitRepo.findById(ref).orElseGet(null);
+        return produitRepo.findById(ref).orElse(null);
     }
 
     @Override
     public Produit saveProduit(ProduitDto produitDto) {
 //        unite et categorie de produit
-        Unite unite = uniteRepo.findById(produitDto.getUnite()).orElseGet(null);
-        Categorie categorie = categorieRepo.findById(produitDto.getCategorie()).orElseGet(null);
+        Unite unite = uniteRepo.findById(produitDto.getUnite()).orElse(null);
+        Categorie categorie = categorieRepo.findById(produitDto.getCategorie()).orElse(null);
 
         Produit produit = Produit.builder().
                 ref(produitDto.getRef())
@@ -56,8 +56,8 @@ public class ProduitService implements IProduitService {
 
 //        Ajouter les matieres premieres est leurs origins
         for (Map.Entry<String,Long> me : produitDto.getMatierePremiere_region().entrySet()){
-            MatierePremiere matierePremiere = matierePremiereRepo.findById(Long.parseLong(me.getKey())).orElseGet(null);
-            Region region = regionRepo.findById(me.getValue()).orElseGet(null);
+            MatierePremiere matierePremiere = matierePremiereRepo.findById(Long.parseLong(me.getKey())).orElse(null);
+            Region region = regionRepo.findById(me.getValue()).orElse(null);
             produitMatiereList.add(ProduitMatiereAsso
                     .builder()
                     .id(new ProduitMatiereKey(produit.getRef(),matierePremiere.getId()))
@@ -73,7 +73,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public Produit updateProduit(String ref, Produit Produit) {
-        Produit pr = produitRepo.findById(ref).orElseGet(null);
+        Produit pr = produitRepo.findById(ref).orElse(null);
         pr.setPrix(Produit.getPrix());
         return produitRepo.save(pr);
     }
