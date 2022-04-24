@@ -31,10 +31,12 @@ public class Produit {
     @JoinColumn(name = "id_categorie")
     Categorie categorie;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cooperative")
+    User cooperative;
+
     @OneToMany(fetch = FetchType.EAGER,
             mappedBy = "produit",
-            cascade = {CascadeType.MERGE,
-                    CascadeType.DETACH,
-                    CascadeType.PERSIST})
+            cascade = {CascadeType.ALL})
     List<ProduitMatiereAsso> produitMatieresAsso=new ArrayList<>();
 }

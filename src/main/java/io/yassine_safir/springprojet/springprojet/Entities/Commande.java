@@ -24,7 +24,7 @@ public class Commande {
 
     @ManyToOne
     @JoinColumn(name = "id_client")
-    Client client;
+    User client;
 
     @OneToMany(mappedBy = "commande",cascade = CascadeType.PERSIST)
     List<ProduitCommandeAsso> produitCommandes=new ArrayList<>();

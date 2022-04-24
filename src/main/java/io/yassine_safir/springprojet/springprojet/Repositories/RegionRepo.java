@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RegionRepo extends JpaRepository<Region, Long> {
-    public Region findRegionByLibelle(String libelle);
+    public Region findByLibelle(String libelle);
 }

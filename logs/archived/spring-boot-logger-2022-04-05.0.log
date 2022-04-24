@@ -1,0 +1,3 @@
+2022-04-05 18:38:12,159 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-3] ProduitService.getProduitById P001
+2022-04-05 18:38:16,219 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-1] ProduitService.getProduitById P002
+2022-04-05 18:38:18,790 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-4] ProduitService.getProduitById P001

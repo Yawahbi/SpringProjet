@@ -5,6 +5,8 @@ import io.yassine_safir.springprojet.springprojet.Repositories.UniteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UniteService implements IUniteService {
 
@@ -12,8 +14,27 @@ public class UniteService implements IUniteService {
     UniteRepo uniteRepo;
 
     @Override
-    public Unite getUnite(Long id) {
-        Unite unite = uniteRepo.findById(id).get();
-        return unite;
+    public List<Unite> getAllUnite() {
+        return uniteRepo.findAll();
+    }
+
+    @Override
+    public Unite getUniteById(Long id) {
+        return uniteRepo.getById(id);
+    }
+
+    @Override
+    public Unite saveUnite(Unite unite) {
+        return uniteRepo.save(unite);
+    }
+
+    @Override
+    public Unite updateUnite(Long id, Unite unite) {
+        return uniteRepo.save(unite);
+    }
+
+    @Override
+    public void deleteUniteById(Long id) {
+        uniteRepo.deleteById(id);
     }
 }

@@ -14,7 +14,9 @@ public class MatierePremiereRepoTest {
     @Test
     public void saveMatierePremiere(){
         MatierePremiere matierePremiere = MatierePremiere.builder().libelle("Huile d'Argan").build();
+        MatierePremiere matierePremiere1 = MatierePremiere.builder().libelle("Amlo").build();
 
         matierePremiereRepo.save(matierePremiere);
+        matierePremiereRepo.save(matierePremiere1);
     }
 }

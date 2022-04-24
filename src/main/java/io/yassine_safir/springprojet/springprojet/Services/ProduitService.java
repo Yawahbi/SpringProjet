@@ -1,13 +1,14 @@
 package io.yassine_safir.springprojet.springprojet.Services;
 
-import io.yassine_safir.springprojet.springprojet.Entities.Categorie;
-import io.yassine_safir.springprojet.springprojet.Entities.Produit;
-import io.yassine_safir.springprojet.springprojet.Repositories.CategorieRepo;
-import io.yassine_safir.springprojet.springprojet.Repositories.ProduitRepo;
+import io.yassine_safir.springprojet.springprojet.DTO.ProduitDto;
+import io.yassine_safir.springprojet.springprojet.Entities.*;
+import io.yassine_safir.springprojet.springprojet.Repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProduitService implements IProduitService {
@@ -18,24 +19,61 @@ public class ProduitService implements IProduitService {
     @Autowired
     CategorieRepo categorieRepo;
 
+    @Autowired
+    UniteRepo uniteRepo;
+
+    @Autowired
+    MatierePremiereRepo matierePremiereRepo;
+
+    @Autowired
+    RegionRepo regionRepo;
+
     @Override
-    public List<Produit> findAllProduit(){
+    public List<Produit> getAllProduit(){
         return produitRepo.findAll();
     }
 
     @Override
     public Produit getProduitById(String ref){
-        return produitRepo.findById(ref).get();
+        return produitRepo.findById(ref).orElseGet(null);
     }
 
     @Override
-    public Produit saveProduit(Produit Produit) {
-        return produitRepo.save(Produit);
+    public Produit saveProduit(ProduitDto produitDto) {
+//        unite et categorie de produit
+        Unite unite = uniteRepo.findById(produitDto.getUnite()).orElseGet(null);
+        Categorie categorie = categorieRepo.findById(produitDto.getCategorie()).orElseGet(null);
+
+        Produit produit = Produit.builder().
+                ref(produitDto.getRef())
+                .nom(produitDto.getNom())
+                .description(produitDto.getDescription())
+                .prix(produitDto.getPrix())
+                .unite(unite)
+                .categorie(categorie)
+                .build();
+        List<ProduitMatiereAsso> produitMatiereList = new ArrayList<>();
+
+//        Ajouter les matieres premieres est leurs origins
+        for (Map.Entry<String,Long> me : produitDto.getMatierePremiere_region().entrySet()){
+            MatierePremiere matierePremiere = matierePremiereRepo.findById(Long.parseLong(me.getKey())).orElseGet(null);
+            Region region = regionRepo.findById(me.getValue()).orElseGet(null);
+            produitMatiereList.add(ProduitMatiereAsso
+                    .builder()
+                    .id(new ProduitMatiereKey(produit.getRef(),matierePremiere.getId()))
+                    .produit(produit)
+                    .matierePremiere(matierePremiere)
+                    .origin(region)
+                    .build());
+        }
+        produit.setProduitMatieresAsso(produitMatiereList);
+
+        return produitRepo.save(produit);
     }
 
     @Override
     public Produit updateProduit(String ref, Produit Produit) {
-        Produit pr = produitRepo.findById(ref).get();
+        Produit pr = produitRepo.findById(ref).orElseGet(null);
         pr.setPrix(Produit.getPrix());
         return produitRepo.save(pr);
     }

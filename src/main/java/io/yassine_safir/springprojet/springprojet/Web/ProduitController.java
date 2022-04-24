@@ -1,60 +1,82 @@
 package io.yassine_safir.springprojet.springprojet.Web;
 
 import io.yassine_safir.springprojet.springprojet.DTO.ProduitDto;
+import io.yassine_safir.springprojet.springprojet.DTO.authDto.response.MessageResponse;
 import io.yassine_safir.springprojet.springprojet.Entities.Produit;
 import io.yassine_safir.springprojet.springprojet.Services.IProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/Produits")
 public class ProduitController {
     @Autowired
     IProduitService produitService;
 
-    @GetMapping("/Produits")
+    @GetMapping("")
     public List<Produit> findall(){
-        return  produitService.findAllProduit();
+        return  produitService.getAllProduit();
     }
 
-    @GetMapping("/Produit/{ref}")
-    public ResponseEntity<Produit> findById(@PathVariable("ref") String ref){
-        Produit pr = produitService.getProduitById(ref);
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("token","value1");
-        return new ResponseEntity<>(pr, responseHeaders, HttpStatus.OK);
+    @GetMapping("/{ref}")
+    public ResponseEntity<?> findById(@PathVariable("ref") String ref){
+        Produit produit = produitService.getProduitById(ref);
+        if (produit==null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: No produit found!"));
+        }
+        return ResponseEntity.ok(produit);
     }
 
-    @PostMapping("/addProduit")
-    public Produit addProduit(@RequestBody Produit Produit){
-        produitService.saveProduit(Produit);
-        return produitService.saveProduit(Produit);
+    @PostMapping("/nouveau")
+    public ResponseEntity<?> addProduit(@RequestBody ProduitDto produitDto){
+        if (produitService.getProduitById(produitDto.getRef())!=null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Ref already exists!"));
+        }
+        if (produitService.saveProduit(produitDto)==null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Operation faild!"));
+        }
+        return ResponseEntity.ok("Produit "+produitDto.getRef()+" have been created ");
     }
 
-    @PutMapping("/Produit/{ref}")
-    public Produit upProduit(@PathVariable("ref") String ref, @RequestBody Produit Produit){
-        return produitService.updateProduit(ref,Produit);
+    @PutMapping("/{ref}")
+    public ResponseEntity<?> updateProduit(@PathVariable("ref") String ref, @RequestBody Produit Produit){
+        if (produitService.getProduitById(ref)==null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: No produit found!"));
+        }
+        if (produitService.updateProduit(ref,Produit)==null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: No produit found!"));
+        }
+        return ResponseEntity.ok("Produit "+ref+" have been deleted ");
     }
 
-    @DeleteMapping("/Produit/{ref}")
-    public void deleteProduit(@PathVariable("ref") String ref){
+    @DeleteMapping("/{ref}")
+    public ResponseEntity<?> deleteProduit(@PathVariable("ref") String ref){
+        if (produitService.getProduitById(ref)==null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: No produit found!"));
+        }
         produitService.deleteProduitById(ref);
+        if (produitService.getProduitById(ref)!=null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Operation faild!"));
+        }
+        return ResponseEntity.ok("Produit "+ref+" have been deleted ");
     }
 
-    @PostMapping("/Produitcat")
-    public void ProduitCat(@RequestBody ProduitDto ProduitDto) {
-        produitService.ProduitCat(ProduitDto.getProduitNom(),ProduitDto.getCategorieLibelle());
-    }
-
-    @PostMapping("/Produitcategory")
-    public void ProduitCategpry(@RequestParam String nomp,@RequestParam String nomc) {
-        produitService.ProduitCat(nomp,nomc);
-
-
-    }
 
 }

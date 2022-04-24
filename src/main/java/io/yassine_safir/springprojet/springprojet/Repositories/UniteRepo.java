@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UniteRepo extends JpaRepository<Unite, Long> {
-    public Unite findUniteByLibelle(String libelle);
+    public Unite findByLibelle(String libelle);
 }

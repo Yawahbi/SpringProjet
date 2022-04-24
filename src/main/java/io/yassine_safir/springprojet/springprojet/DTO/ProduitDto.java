@@ -1,14 +1,18 @@
 package io.yassine_safir.springprojet.springprojet.DTO;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProduitDto {
-    private String produitNom;
-    private String categorieLibelle;
+    private String ref;
+    private String nom;
+    private String description;
+    private double prix;
+    private Long unite;
+    private Long categorie;
+    private Map<String, Long> matierePremiere_region=new HashMap<>();
 
 }

@@ -17,9 +17,9 @@ import java.io.Serializable;
 public class ProduitCommandeKey implements Serializable {
 
     @Column(name = "product_id")
-    Long idProduit;
+    String idProduit;
 
     @Column(name = "commande_id")
-    Long idCommande;
+    String idCommande;
 
 }

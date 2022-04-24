@@ -20,26 +20,23 @@ public class ProduitRepoTest {
     @Autowired
     ProduitService produitService;
 
-//    @Test
-//    public void saveProduit(){
-//        Produit produit = Produit.builder()
-//                .ref("P001")
-//                .nom("Argan d'Agadir")
-//                .description("une tres bonne qualite d'argan")
-//                .prix(1000)
-//                .unite(uniteRepo.findUniteByLibelle("Litre"))
-//                .categorie(categorieRepo.findCategorieByLibelle("Cosmetique"))
-//                .build();
-//
-//        produitRepo.save(produit);
-//    }
-
     @Test
+    public void saveProduit(){
+        Produit produit = Produit.builder()
+                .ref("P001")
+                .nom("Argan d'Agadir")
+                .description("une tres bonne qualite d'argan")
+                .prix(1000)
+                .unite(uniteRepo.findByLibelle("Litre"))
+                .categorie(categorieRepo.findByLibelle("Cosmetique"))
+                .build();
+
+        produitRepo.save(produit);
+    }
+
     public void getProduit(){
-        Produit produit;
-//        produit = produitRepo.findProduitByRef("P001");
-        produit = produitService.getProduitById("P001");
-        System.out.println("✅ Produit : "+produit.getNom());
+        Produit produit = produitService.getProduitById("P001");
+//        System.out.println("✅ Produit : "+produit.getNom());
     }
 }
 

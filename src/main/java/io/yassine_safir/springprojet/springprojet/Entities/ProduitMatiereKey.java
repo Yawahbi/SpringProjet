@@ -16,10 +16,10 @@ import java.io.Serializable;
 @Embeddable
 public class ProduitMatiereKey implements Serializable {
 
-    @Column(name = "product_id")
-    Long idProduit;
+    @Column(name = "id_produit")
+    String idProduit;
 
-    @Column(name = "matiere_id")
+    @Column(name = "id_matiere")
     Long idMatierePremiere;
 
 }

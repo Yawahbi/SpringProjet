@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class ProduitMatiereAsso {
 
     @EmbeddedId
-    ProduitMatiereKey id=new ProduitMatiereKey();
+    ProduitMatiereKey id = new ProduitMatiereKey();
 
     @ManyToOne(cascade = {
             CascadeType.MERGE,

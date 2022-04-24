@@ -14,7 +14,9 @@ public class RegionRepoTest {
     @Test
     public void saveRegion(){
         Region region = Region.builder().libelle("Agadir").build();
+        Region region1 = Region.builder().libelle("Casa").build();
 
         regionRepo.save(region);
+        regionRepo.save(region1);
     }
 }
