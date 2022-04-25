@@ -24,9 +24,9 @@ Here are the spring concepts implemented :
 <!-- Contributers -->
 ## Contributers
 
-WAHBI Ysssine  - Yawahbi@gmail.com
+WAHBI Yassine  - Yawahbi@gmail.com
 
-SAFIR Mohemmed - Mohammedsafir17@gmail.com
+SAFIR Mohammed - Mohammedsafir17@gmail.com
 
 Project Link: [https://github.com/Yawahbi/SpringProjet](https://github.com/Yawahbi/SpringProjet)
 
