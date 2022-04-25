@@ -26,7 +26,7 @@ Here are the spring concepts implemented :
 
 WAHBI Ysssine  - Yawahbi@gmail.com
 
-SAFIR Mohemmed - demosafir@gmail.com
+SAFIR Mohemmed - Mohammedsafir17@gmail.com
 
 Project Link: [https://github.com/Yawahbi/SpringProjet](https://github.com/Yawahbi/SpringProjet)
 
