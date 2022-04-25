@@ -6,6 +6,7 @@ import io.yassine_safir.springprojet.springprojet.security.services.UserDetailsS
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -24,6 +25,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
     // jsr250Enabled = true,
     prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+  private static final String[] ADMIN_WHITE_LIST = {
+          "/**"
+  };
+  private static final String[] COOPERATIVE_WHITE_LIST = {
+          "/Produits/**",
+  };
+  private static final String[] CLIENT_WHITE_LIST = {
+          "/Products/**",
+  };
+
   @Autowired
   UserDetailsServiceImpl userDetailsService;
 
@@ -56,8 +68,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     http.cors().and().csrf().disable()
       .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
       .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-      .authorizeRequests().antMatchers("/auth/**").permitAll()
+      .authorizeRequests()
+      .antMatchers("/auth/**").permitAll()
       .antMatchers("/test/**").permitAll()
+//     Role based auth
+      .antMatchers(ADMIN_WHITE_LIST).hasAnyAuthority("ROLE_ADMIN")
+      .antMatchers(COOPERATIVE_WHITE_LIST).hasAnyAuthority("ROLE_COOPIRATIVE")
+      .antMatchers(HttpMethod.GET,CLIENT_WHITE_LIST).hasAnyAuthority("ROLE_CLIENT")
       .anyRequest().authenticated();
 
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

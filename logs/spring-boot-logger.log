@@ -1,7 +1,6 @@
-2022-04-24 14:42:19,278 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-4] ProduitService.getProduitById P001
-2022-04-24 14:42:57,510 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-6] ProduitService.getProduitById P001
-2022-04-24 16:00:20,869 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-2] ProduitService.getProduitById P001
-2022-04-24 16:00:32,661 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-3] ProduitService.getProduitById P001
-2022-04-24 16:00:44,089 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-5] ProduitService.getProduitById P002
-2022-04-24 16:00:49,371 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-7] ProduitService.getProduitById P001
-2022-04-24 16:00:49,403 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-7] ProduitService.getProduitById P001
+2022-04-25 13:26:33,470 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-7] ProduitController.findById P001
+2022-04-25 13:27:37,458 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-2] ProduitController.findById P001
+2022-04-25 13:32:10,660 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-7] ProduitController.findById P003
+2022-04-25 13:32:14,685 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-9] ProduitController.findById P002
+2022-04-25 13:37:10,502 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-7] ProduitController.findById P002
+2022-04-25 13:37:19,818 TRACE io.yassine_safir.springprojet.springprojet.Aspects.TraceProduitsPopulaires [http-nio-8080-exec-9] ProduitController.findById P002

@@ -14,7 +14,7 @@ public class TraceProduitsPopulaires {
 
     private static final Logger logger = (Logger) LoggerFactory.getLogger(TraceProduitsPopulaires.class);
 
-    @Pointcut("execution(* io.yassine_safir.springprojet.springprojet.Services.ProduitService.getProduitById(*))")
+    @Pointcut("execution(* io.yassine_safir.springprojet.springprojet.Web.ProduitController.findById(*))")
     public void traceProduitsPopulairesPointcut() { }
 
     @Around("traceProduitsPopulairesPointcut()")
